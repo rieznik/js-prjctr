@@ -27,7 +27,7 @@ const currentMaxValue = 4589;
 
 const reverseNumber = number =>
   Number(
-    currentMaxValue
+    number
       .toString()
       .split('')
       .reverse()
