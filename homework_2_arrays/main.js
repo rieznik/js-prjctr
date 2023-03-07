@@ -4,17 +4,17 @@
 
 const userNames = ["Петрик Ольга Іванівна", "Гнатюк Петро Антонович", "Рудко Андрій Опанасович"];
 
-const getSortedInitials = (userNames) => {
+const getInitials = name =>
+  name
+    .split(' ')
+    .map(splittedName => splittedName.charAt(0) + '.')
+    .join(' ');
 
-  const unsortedInitials = userNames.map(name =>
-    name
-      .split(' ')
-      .map(splittedName => splittedName.charAt(0) + '.')
-      .join(' ')
-  );
+const getSortedInitials = (userNames) => {
+  const unsortedInitials = userNames.map(getInitials);
 
   return unsortedInitials.sort();
-}
+};
 
 const initials = getSortedInitials(userNames);
 
@@ -32,7 +32,7 @@ const reverseNumber = number =>
       .split('')
       .reverse()
       .join('')
-  )
+  );
 
 const reverseMaxValue = reverseNumber(currentMaxValue);
 
@@ -43,12 +43,12 @@ console.log(typeof reverseMaxValue); // 'number'
 
 const resultsArray = [1, 2, [3, [4]]];
 
+const getProduct = (number1, number2) => number1 * number2;
+
 const getProductOfArray = array =>
   array
     .flat(Infinity)
-    .reduce(multiply, 1)
-
-const multiply = (accumulator, currentValue) => accumulator * currentValue
+    .reduce(getProduct, 1);
 
 const productOfArray = getProductOfArray(resultsArray);
 
