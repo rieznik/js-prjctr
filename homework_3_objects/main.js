@@ -20,3 +20,22 @@ const durationBetweenDates = (startDate = '1 Jan 1970', endDate = Date(), units 
 
 durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds'); // returns '86400 seconds'
 durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days'); // returns '362 days'
+
+
+// Optimize object data
+
+const priceData = {
+  Apples: '23.4',
+  BANANAS: '48',
+  oRAngGEs: '48.7584',
+};
+
+const optimizer = (data) => {
+  const optimizedData = Object.entries(data)
+    .map(([key, value]) => ([key.toLowerCase(), (+value).toFixed(2)]));
+
+  return Object.fromEntries(optimizedData);
+}
+
+const updatedPriceData = optimizer(priceData);
+console.log(updatedPriceData)    // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
