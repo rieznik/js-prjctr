@@ -39,3 +39,41 @@ const optimizer = (data) => {
 
 const updatedPriceData = optimizer(priceData);
 console.log(updatedPriceData)    // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
+
+
+// Recursively find sum of odd positive numbers until a specified number
+
+const recursiveOddSumTo = number => {
+  if (!(number % 2)) {
+    number = number - 1;
+  }
+
+  if (number <= 1) {
+    return number;
+  } else {
+    return number + recursiveOddSumTo(number - 2);
+  }
+}
+
+console.log(recursiveOddSumTo(1)) // 1
+console.log(recursiveOddSumTo(10)) // 25
+
+
+// Iteratively find sum of odd positive numbers until a specified number
+
+function iterativeOddSumTo(number) {
+  if (!(number % 2)) {
+    number = number - 1;
+  }
+
+  let sum = 0;
+  while (number > 0) {
+    sum += number;
+    number -= 2;
+  }
+
+  return sum;
+}
+
+console.log(iterativeOddSumTo(1)) // 1
+console.log(iterativeOddSumTo(10)) // 25
