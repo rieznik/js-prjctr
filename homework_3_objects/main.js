@@ -44,15 +44,15 @@ console.log(updatedPriceData)    // {apples: '23.40', bananas: '48.00', oranges:
 // Recursively find sum of odd positive numbers until a specified number
 
 const recursiveOddSumTo = number => {
-  let n = number;
-
-  if (n <= 1) {
-    return n;
-  } else if (n % 2) {
-    return n + recursiveOddSumTo(n - 2);
-  } else {
-    return recursiveOddSumTo(n - 1);
+  if (number <= 1) {
+    return number;
   }
+
+  if (number % 2) {
+    return number + recursiveOddSumTo(number - 2);
+  }
+
+  return recursiveOddSumTo(number - 1);
 }
 
 console.log(recursiveOddSumTo(1)) // 1
@@ -62,16 +62,10 @@ console.log(recursiveOddSumTo(10)) // 25
 // Iteratively find sum of odd positive numbers until a specified number
 
 function iterativeOddSumTo(number) {
-  let n = number;
-
-  if (!(n % 2)) {
-    n--;
-  }
-
   let sum = 0;
-  while (n > 0) {
-    sum += n;
-    n -= 2;
+
+  for (let i = 1; i <= number; i += 2) {
+    sum += i;
   }
 
   return sum;
