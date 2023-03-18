@@ -74,3 +74,38 @@ const byProperty = (property, direction) => {
 console.log(movies.sort(byProperty('releaseYear', '>'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
 console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
 console.log(movies.sort(byProperty('movieName', '>'))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
+
+//* detonatorTimer via setInterval
+
+const detonatorTimer1 = (delay) => {
+  let counter = delay;
+  const intervalId = setInterval(() => {
+    if (counter) {
+      console.log(counter);
+      counter -= 1;
+    } else {
+      console.log('BOOM!');
+      clearInterval(intervalId);
+    }
+  }, 1000);
+};
+
+//* detonatorTimer via setTimeout
+
+const detonatorTimer2 = (delay) => {
+  if (!delay) {
+    setTimeout(() => console.log('BOOM!'), 1000);
+    return;
+  }
+  setTimeout(() => {
+    console.log(delay);
+    detonatorTimer2(delay - 1);
+  }, 1000);
+};
+
+detonatorTimer1(3);
+detonatorTimer2(3);
+// 3
+// 2
+// 1
+// BOOM!*
