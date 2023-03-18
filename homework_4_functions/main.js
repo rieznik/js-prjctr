@@ -109,3 +109,30 @@ detonatorTimer2(3);
 // 2
 // 1
 // BOOM!*
+
+//* Me and my methods
+
+const me = {
+  name: 'Katia',
+  residency: 'Sumy',
+  gender: 'female',
+  age: 32,
+  hobby: 'taking care of plants',
+  defaultMood: 'dreamy',
+  currentMood: 'focused',
+  introduce() {
+    console.log(`My name is ${this.name} and I live in ${this.residency}`);
+  },
+  getHobby() {
+    console.log(`I like ${this.hobby}`);
+  },
+  describeMyMood() {
+    console.log(
+      `Mostly I'm ${this.defaultMood}, but now I'm ${this.currentMood}`
+    );
+  },
+};
+
+me.introduce();
+me.getHobby();
+me.describeMyMood();
