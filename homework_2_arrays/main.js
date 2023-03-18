@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Return sorted initials
 
 const userNames = [
