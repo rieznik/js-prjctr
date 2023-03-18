@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/rieznik/js-prjctr#readme",
   "devDependencies": {
-    "eslint": "^8.35.0"
+    "eslint": "^8.36.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.7.0",
+    "prettier": "^2.8.4"
   }
 }

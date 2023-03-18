@@ -1,17 +1,20 @@
-'use strict';
-
+/* eslint-disable no-console */
 // Return sorted initials
 
-const userNames = ["Петрик Ольга Іванівна", "Гнатюк Петро Антонович", "Рудко Андрій Опанасович"];
+const userNames = [
+  'Петрик Ольга Іванівна',
+  'Гнатюк Петро Антонович',
+  'Рудко Андрій Опанасович',
+];
 
-const getInitials = name =>
+const getInitials = (name) =>
   name
     .split(' ')
-    .map(splittedName => splittedName.charAt(0) + '.')
+    .map((splittedName) => `${splittedName.charAt(0)}.`)
     .join(' ');
 
-const getSortedInitials = (userNames) => {
-  const unsortedInitials = userNames.map(getInitials);
+const getSortedInitials = (names) => {
+  const unsortedInitials = names.map(getInitials);
 
   return unsortedInitials.sort();
 };
@@ -20,19 +23,12 @@ const initials = getSortedInitials(userNames);
 
 console.log(initials); // [ "Г.П.А.", "П.О.І.", "Р.А.О."]
 
-
 // Reverse the number
 
 const currentMaxValue = 4589;
 
-const reverseNumber = number =>
-  Number(
-    number
-      .toString()
-      .split('')
-      .reverse()
-      .join('')
-  );
+const reverseNumber = (number) =>
+  Number(number.toString().split('').reverse().join(''));
 
 const reverseMaxValue = reverseNumber(currentMaxValue);
 
@@ -45,10 +41,7 @@ const resultsArray = [1, 2, [3, [4]]];
 
 const getProduct = (number1, number2) => number1 * number2;
 
-const getProductOfArray = array =>
-  array
-    .flat(Infinity)
-    .reduce(getProduct, 1);
+const getProductOfArray = (array) => array.flat(Infinity).reduce(getProduct, 1);
 
 const productOfArray = getProductOfArray(resultsArray);
 

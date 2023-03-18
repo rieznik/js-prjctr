@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // 1. Return Negative https://www.codewars.com/kata/55685cd7ad70877c23000102
 
 function makeNegative(number) {
@@ -19,7 +20,7 @@ function evenOrOdd(number) {
 // 4. Convert a Number to a String https://www.codewars.com/kata/5265326f5fda8eb1160004c8
 
 function numberToString(number) {
-  return number + '';
+  return `${number}`;
 }
 
 // 5. Convert boolean values to strings 'Yes' or 'No' https://www.codewars.com/kata/53369039d7ab3ac506000467
@@ -35,7 +36,7 @@ function reverseString(string) {
   let index = string.length;
   while (index) {
     reversedString += string.at(index - 1);
-    index--;
+    index -= 1;
   }
   return reversedString;
 }
