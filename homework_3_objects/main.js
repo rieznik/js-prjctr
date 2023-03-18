@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Duration between dates
 
 const durationBetweenDates = (
