@@ -1,4 +1,4 @@
-//* add all arguments passed to a function
+//* 1. add all arguments passed to a function
 
 const addThemAll = (...numbers) => numbers.reduce((acc, num) => acc + num, 0);
 
@@ -6,7 +6,7 @@ console.log(addThemAll(2, 4)); // 6
 console.log(addThemAll(1, 2, 3, 4)); // 10
 console.log(addThemAll(5, 5, 10)); // 20
 
-//* multiply with closure
+//* 2. multiply with closure
 
 const multiply = (a) => (b) => a * b;
 
@@ -14,7 +14,7 @@ console.log(multiply(5)(5)); // 25
 console.log(multiply(2)(-2)); // -4
 console.log(multiply(4)(3)); // 12
 
-//* movie sorting
+//* 3. movie sorting
 
 const movies = [
   {
@@ -75,7 +75,7 @@ console.log(movies.sort(byProperty('releaseYear', '>'))); // виведе мас
 console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
 console.log(movies.sort(byProperty('movieName', '>'))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
 
-//* detonatorTimer via setInterval
+//* 4.1 detonatorTimer via setInterval()
 
 const detonatorTimer1 = (delay) => {
   let counter = delay;
@@ -90,7 +90,13 @@ const detonatorTimer1 = (delay) => {
   }, 1000);
 };
 
-//* detonatorTimer via setTimeout
+detonatorTimer1(3);
+// 3
+// 2
+// 1
+// BOOM!*
+
+//* 4.2 detonatorTimer via setTimeout()
 
 const detonatorTimer2 = (delay) => {
   if (!delay) {
@@ -103,14 +109,13 @@ const detonatorTimer2 = (delay) => {
   }, 1000);
 };
 
-detonatorTimer1(3);
 detonatorTimer2(3);
 // 3
 // 2
 // 1
 // BOOM!*
 
-//* Me and my methods
+//* 5. Me object and its methods
 
 const me = {
   name: 'Katia',
@@ -136,3 +141,9 @@ const me = {
 me.introduce();
 me.getHobby();
 me.describeMyMood();
+
+//* 6. secure object methods
+// do not understand the task yet, waiting for the next lecture
+
+// *7. Decorator function that slows down execution of a callback function
+// do not understand the task yet, waiting for the next lecture
