@@ -149,12 +149,12 @@ setTimeout(securedSelfDescribeMyMood, 3000);
 const someFunction = (something) => console.log(`This is ${something}`);
 
 function slower(func, seconds) {
-  const wrapper = (arg) => {
+  const chillOut = (arg) => {
     console.log(`Chill out, you will get you result in ${seconds} seconds`);
     setTimeout(() => func.call(this, arg), seconds * 1000);
   };
 
-  return wrapper;
+  return chillOut;
 }
 
 const slowedSomeFunction = slower(someFunction, 5);
