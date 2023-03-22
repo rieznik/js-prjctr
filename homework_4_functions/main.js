@@ -44,31 +44,21 @@ const movies = [
 ];
 
 const byProperty = (property, direction) => {
-  const sortAscending = (movie1, movie2) => {
-    if (movie1[property] < movie2[property]) {
-      return -1;
-    }
-    if (movie1[property] > movie2[property]) {
-      return 1;
-    }
-    return 0;
-  };
+  const swap = 1;
+  const skip = -1;
+  const equal = 0;
 
-  const sortDescending = (movie1, movie2) => {
+  const sortByDirection = (movie1, movie2) => {
     if (movie1[property] > movie2[property]) {
-      return -1;
+      return direction === '<' ? skip : swap;
     }
     if (movie1[property] < movie2[property]) {
-      return 1;
+      return direction === '<' ? swap : skip;
     }
-    return 0;
+    return equal;
   };
 
-  if (direction === '<') {
-    return sortDescending;
-  }
-
-  return sortAscending;
+  return sortByDirection;
 };
 
 console.log(movies.sort(byProperty('releaseYear', '>'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
@@ -77,14 +67,17 @@ console.log(movies.sort(byProperty('movieName', '>'))); // виведе маси
 
 //* 4.1 detonatorTimer via setInterval()
 
+const log = (value) => console.log(value);
+
 const detonatorTimer1 = (delay) => {
   let counter = delay;
+
   const intervalId = setInterval(() => {
     if (counter) {
-      console.log(counter);
+      log(counter);
       counter -= 1;
     } else {
-      console.log('BOOM!');
+      log('BOOM!');
       clearInterval(intervalId);
     }
   }, 1000);
@@ -99,12 +92,13 @@ detonatorTimer1(3);
 //* 4.2 detonatorTimer via setTimeout()
 
 const detonatorTimer2 = (delay) => {
-  if (!delay) {
-    setTimeout(() => console.log('BOOM!'), 1000);
-    return;
-  }
   setTimeout(() => {
-    console.log(delay);
+    if (!delay) {
+      log('BOOM!');
+      return;
+    }
+
+    log(delay);
     detonatorTimer2(delay - 1);
   }, 1000);
 };
