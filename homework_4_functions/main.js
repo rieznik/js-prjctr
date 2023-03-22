@@ -137,7 +137,13 @@ me.getHobby();
 me.describeMyMood();
 
 //* 6. secure object methods
-// do not understand the task yet, waiting for the next lecture
+const securedSelfIntroduce = me.introduce.bind(me);
+const securedSelfGetHobby = me.getHobby.bind(me);
+const securedSelfDescribeMyMood = me.describeMyMood.bind(me);
+
+setTimeout(securedSelfIntroduce, 1000);
+setTimeout(securedSelfGetHobby, 2000);
+setTimeout(securedSelfDescribeMyMood, 3000);
 
 // *7. Decorator function that slows down execution of a callback function
 // do not understand the task yet, waiting for the next lecture
