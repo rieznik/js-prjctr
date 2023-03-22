@@ -146,4 +146,17 @@ setTimeout(securedSelfGetHobby, 2000);
 setTimeout(securedSelfDescribeMyMood, 3000);
 
 // *7. Decorator function that slows down execution of a callback function
-// do not understand the task yet, waiting for the next lecture
+const someFunction = (something) => console.log(`This is ${something}`);
+
+function slower(func, seconds) {
+  const wrapper = (arg) => {
+    console.log(`Chill out, you will get you result in ${seconds} seconds`);
+    setTimeout(() => func.call(this, arg), seconds * 1000);
+  };
+
+  return wrapper;
+}
+
+const slowedSomeFunction = slower(someFunction, 5);
+
+slowedSomeFunction('success');
