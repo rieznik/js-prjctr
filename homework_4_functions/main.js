@@ -71,6 +71,7 @@ console.log([...movies].sort(byProperty('movieName', '>'))); // виведе м�
 
 const detonatorTimer1 = (delay) => {
   let counter = delay;
+  let intervalId;
 
   const count = () => {
     console.log(counter || 'BOOM!');
@@ -78,7 +79,7 @@ const detonatorTimer1 = (delay) => {
     if (counter < 0) clearInterval(intervalId);
   };
 
-  const intervalId = setInterval(count, 1000);
+  intervalId = setInterval(count, 1000);
 };
 
 detonatorTimer1(3);
