@@ -48,39 +48,37 @@ const byProperty = (property, direction) => {
   const skip = -1;
   const equal = 0;
 
-  const sortByDirection = (movie1, movie2) => {
-    if (movie1[property] > movie2[property]) {
-      return direction === '<' ? skip : swap;
-    }
+  const sortAscending = (movie1, movie2) => {
     if (movie1[property] < movie2[property]) {
-      return direction === '<' ? swap : skip;
+      return skip;
+    }
+    if (movie1[property] > movie2[property]) {
+      return swap;
     }
     return equal;
   };
 
-  return sortByDirection;
+  const sortDescending = (movie1, movie2) => -sortAscending(movie1, movie2);
+
+  return direction === '>' ? sortAscending : sortDescending;
 };
 
-console.log(movies.sort(byProperty('releaseYear', '>'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
-console.log(movies.sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
-console.log(movies.sort(byProperty('movieName', '>'))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
+console.log([...movies].sort(byProperty('releaseYear', '>'))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого*
+console.log([...movies].sort(byProperty('runningTimeInMinutes', '<'))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого*
+console.log([...movies].sort(byProperty('movieName', '>'))); // виведе масив фільмів посортованих по назві, в алфавітному порядку*
 
 //* 4.1 detonatorTimer via setInterval()
-
-const log = (value) => console.log(value);
 
 const detonatorTimer1 = (delay) => {
   let counter = delay;
 
-  const intervalId = setInterval(() => {
-    if (counter) {
-      log(counter);
-      counter -= 1;
-    } else {
-      log('BOOM!');
-      clearInterval(intervalId);
-    }
-  }, 1000);
+  const count = () => {
+    console.log(counter || 'BOOM!');
+    counter -= 1;
+    if (counter < 0) clearInterval(intervalId);
+  };
+
+  const intervalId = setInterval(count, 1000);
 };
 
 detonatorTimer1(3);
@@ -92,13 +90,10 @@ detonatorTimer1(3);
 //* 4.2 detonatorTimer via setTimeout()
 
 const detonatorTimer2 = (delay) => {
-  setTimeout(() => {
-    if (!delay) {
-      log('BOOM!');
-      return;
-    }
+  if (delay < 0) return;
 
-    log(delay);
+  setTimeout(() => {
+    console.log(delay || 'BOOM!');
     detonatorTimer2(delay - 1);
   }, 1000);
 };
