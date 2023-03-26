@@ -1,0 +1,7 @@
+body {
+  padding: 10px;
+  color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+}
