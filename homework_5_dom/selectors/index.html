@@ -3,12 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script type="text/javascript" src="main.js"></script>
-    <title>webinar 9</title>
+    <link rel="stylesheet" href="styles.css" />
+    <title>webinar 10</title>
   </head>
-  <body>
-    <h1>Основи роботи з DOM</h1>
+  <body
+    style="
+      padding: 10px;
+      color: red;
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 100%;
+    "
+  >
+    <h1>Основи роботи з DOM (2)</h1>
     <section class="firstSection">
+      <!-- якийсь коментар -->
       <h2>DOM дерево</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -40,7 +49,12 @@
         <li>Пункт 5</li>
         <li class="text">Пункт 6</li>
       </ul>
+      <button class="redBtn">Update russophobia level</button>
+      <div class="hatredLevelBlock">
+        <label class="hatredLevelLabel">Current level:</label>
+        <span class="hatredLevelCounter"></span>
+      </div>
     </div>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
