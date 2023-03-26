@@ -1,0 +1,14 @@
+.button-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background-color: aliceblue;
+}
+
+.background__on {
+  background-color: darkslategray;
+}

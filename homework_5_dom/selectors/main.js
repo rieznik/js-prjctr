@@ -3,4 +3,9 @@
 const headingAboutNav = document.getElementById('headerTwo');
 const firstSection = document.getElementsByTagName('section');
 const fifthLi = document.querySelector('li:nth-child(5)');
-const elemantsWithClassText = document.getElementsByClassName('text');
+const elementsWithClassText = document.getElementsByClassName('text');
+
+console.log(headingAboutNav);
+console.log(firstSection);
+console.log(fifthLi);
+console.log(elementsWithClassText);
