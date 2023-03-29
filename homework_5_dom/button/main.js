@@ -16,14 +16,13 @@ const getFormattedDate = (date) => {
 };
 
 const updateTimestampMessage = (theme) => {
-  const previousTheme = theme === 'light' ? 'dark' : 'light';
   const date = new Date();
 
   if (timestampMessageElem.classList.contains('hidden')) {
     timestampMessageElem.classList.remove('hidden');
   }
 
-  const timestampMessage = `Last time on the ${previousTheme} side: ${getFormattedDate(
+  const timestampMessage = `Last time on the ${theme} side: ${getFormattedDate(
     date
   )}`;
 
