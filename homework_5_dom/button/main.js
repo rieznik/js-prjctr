@@ -1,11 +1,8 @@
-const button = document.querySelector('#button');
-const body = document.querySelector('body');
-const timestamp = document.getElementById('timestamp');
+const buttonElem = document.querySelector('#button');
+const bodyElem = document.querySelector('body');
+const timestampMessageElem = document.getElementById('timestamp-msg');
 
-const setTimestamp = () => {
-  const theme = localStorage.getItem('theme');
-  const previousTheme = theme === 'light' ? 'dark' : 'light';
-  const date = new Date();
+const getFormattedDate = (date) => {
   const [day, month, year, hours, minutes, seconds] = [
     date.getDate(),
     date.getMonth(),
@@ -15,54 +12,62 @@ const setTimestamp = () => {
     date.getSeconds(),
   ];
 
-  if (timestamp.classList.contains('hidden')) {
-    timestamp.classList.remove('hidden');
+  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+};
+
+const updateTimestampMessage = (theme) => {
+  const previousTheme = theme === 'light' ? 'dark' : 'light';
+  const date = new Date();
+
+  if (timestampMessageElem.classList.contains('hidden')) {
+    timestampMessageElem.classList.remove('hidden');
   }
 
-  const timeMessage = `Last time on the ${previousTheme} side: ${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  const timestampMessage = `Last time on the ${previousTheme} side: ${getFormattedDate(
+    date
+  )}`;
 
-  localStorage.setItem('timestamp', `${timeMessage}`);
-
-  timestamp.innerText = timeMessage;
+  localStorage.setItem('timestampMessage', `${timestampMessage}`);
+  timestampMessageElem.innerText = timestampMessage;
 };
 
-const setDarkTheme = () => {
-  localStorage.setItem('theme', 'dark');
-  button.innerText = 'Turn to the light side, we have ☕️';
-  body.classList.replace('light-theme', 'dark-theme');
-};
-
-const setLightTheme = () => {
-  localStorage.setItem('theme', 'light');
-  button.innerText = 'Come to the dark side, we have 🍪';
-  body.classList.replace('dark-theme', 'light-theme');
+const setTheme = (theme) => {
+  localStorage.setItem('theme', theme);
+  if (theme === 'dark') {
+    buttonElem.innerText = 'Turn to the light side, we have ☕️';
+    bodyElem.classList.replace('light-theme', 'dark-theme');
+  } else {
+    buttonElem.innerText = 'Come to the dark side, we have 🍪';
+    bodyElem.classList.replace('dark-theme', 'light-theme');
+  }
 };
 
 (() => {
   const theme = localStorage.getItem('theme');
-  const existingMessage = localStorage.getItem('timestamp');
+  const timestampMessage = localStorage.getItem('timestampMessage');
 
   if (!theme || theme === 'light') {
-    localStorage.setItem('theme', 'light');
+    setTheme('light');
   } else {
-    setDarkTheme();
+    setTheme('dark');
   }
 
-  if (existingMessage) {
-    timestamp.classList.remove('hidden');
-    timestamp.innerText = existingMessage;
-    console.log('I am here');
+  if (timestampMessage) {
+    timestampMessageElem.classList.remove('hidden');
+    timestampMessageElem.innerText = timestampMessage;
   }
 })();
 
-const toggleTheme = () => {
-  const theme = localStorage.getItem('theme');
+const toggleTheme = (theme) => {
   if (theme === 'light') {
-    setDarkTheme();
+    setTheme('dark');
   } else {
-    setLightTheme();
+    setTheme('light');
   }
 };
 
-button.addEventListener('click', toggleTheme);
-button.addEventListener('click', setTimestamp);
+buttonElem.addEventListener('click', () => {
+  const theme = localStorage.getItem('theme');
+  toggleTheme(theme);
+  updateTimestampMessage(theme);
+});
