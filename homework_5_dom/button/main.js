@@ -8,19 +8,13 @@ import { getTheme, setTheme, setTimestamp, getTimestamp } from './ls.js';
 const buttonElem = document.querySelector('#button');
 
 const initState = () => {
-  const theme = getTheme();
   const timestamp = getTimestamp();
-
-  if (!theme) {
-    setTheme('light');
+  if (timestamp) {
+    setTimestampMessage();
   }
 
   setStyle();
   setButtonText();
-
-  if (timestamp) {
-    setTimestampMessage();
-  }
 };
 
 initState();
