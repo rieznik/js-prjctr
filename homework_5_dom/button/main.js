@@ -1,7 +1,7 @@
 import { getFormattedDate } from './getFormattedDate.js';
+import { setTheme } from './setTheme.js';
 
 const buttonElem = document.querySelector('#button');
-const bodyElem = document.querySelector('body');
 const timestampMessageElem = document.getElementById('timestamp-msg');
 
 const updateTimestampMessage = (theme) => {
@@ -19,18 +19,7 @@ const updateTimestampMessage = (theme) => {
   timestampMessageElem.innerText = timestampMessage;
 };
 
-const setTheme = (theme) => {
-  localStorage.setItem('theme', theme);
-  if (theme === 'dark') {
-    buttonElem.innerText = 'Turn to the light side, we have ☕️';
-    bodyElem.classList.replace('light-theme', 'dark-theme');
-  } else {
-    buttonElem.innerText = 'Come to the dark side, we have 🍪';
-    bodyElem.classList.replace('dark-theme', 'light-theme');
-  }
-};
-
-(() => {
+const initState = () => {
   const theme = localStorage.getItem('theme');
   const timestampMessage = localStorage.getItem('timestampMessage');
 
@@ -44,7 +33,9 @@ const setTheme = (theme) => {
     timestampMessageElem.classList.remove('hidden');
     timestampMessageElem.innerText = timestampMessage;
   }
-})();
+};
+
+initState();
 
 const toggleTheme = (theme) => {
   if (theme === 'light') {
