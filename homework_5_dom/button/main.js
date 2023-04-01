@@ -1,19 +1,8 @@
+import { getFormattedDate } from './getFormattedDate.js';
+
 const buttonElem = document.querySelector('#button');
 const bodyElem = document.querySelector('body');
 const timestampMessageElem = document.getElementById('timestamp-msg');
-
-const getFormattedDate = (date) => {
-  const [day, month, year, hours, minutes, seconds] = [
-    date.getDate(),
-    date.getMonth(),
-    date.getFullYear(),
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds(),
-  ];
-
-  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
-};
 
 const updateTimestampMessage = (theme) => {
   const date = new Date();
