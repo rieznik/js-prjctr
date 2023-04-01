@@ -23,16 +23,11 @@ const setStyle = (theme) => {
 };
 
 export const setState = () => {
-  let theme = getTheme();
+  const theme = getTheme() || setTheme('light');
   const timestamp = getTimestamp();
 
   if (timestamp) {
     setTimestampMessage(theme, timestamp);
-  }
-
-  if (!theme) {
-    setTheme('light');
-    theme = 'light';
   }
 
   setStyle(theme);

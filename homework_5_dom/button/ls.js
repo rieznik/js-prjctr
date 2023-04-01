@@ -27,5 +27,6 @@ export const getTheme = () => {
 };
 
 export const setTheme = (theme) => {
-  return localStorage.setItem(LS_THEME_KEY, theme);
+  localStorage.setItem(LS_THEME_KEY, theme);
+  return theme;
 };
