@@ -1,23 +1,8 @@
-import { getFormattedDate } from './getFormattedDate.js';
 import { setTheme } from './setTheme.js';
+import { updateTimestampMessage } from './updateTimestampMessage.js';
 
 const buttonElem = document.querySelector('#button');
 const timestampMessageElem = document.getElementById('timestamp-msg');
-
-const updateTimestampMessage = (theme) => {
-  const date = new Date();
-
-  if (timestampMessageElem.classList.contains('hidden')) {
-    timestampMessageElem.classList.remove('hidden');
-  }
-
-  const timestampMessage = `Last time on the ${theme} side: ${getFormattedDate(
-    date
-  )}`;
-
-  localStorage.setItem('timestampMessage', `${timestampMessage}`);
-  timestampMessageElem.innerText = timestampMessage;
-};
 
 const initState = () => {
   const theme = localStorage.getItem('theme');
