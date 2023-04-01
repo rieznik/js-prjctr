@@ -21,16 +21,10 @@ const initState = () => {
 
 initState();
 
-const toggleTheme = (theme) => {
-  if (theme === 'light') {
-    setTheme('dark');
-  } else {
-    setTheme('light');
-  }
-};
-
 buttonElem.addEventListener('click', () => {
   const theme = localStorage.getItem('theme');
-  toggleTheme(theme);
+  const oppositeTheme = theme === 'light' ? 'dark' : 'light';
+
+  setTheme(oppositeTheme);
   updateTimestampMessage(theme);
 });

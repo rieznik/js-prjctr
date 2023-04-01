@@ -4,15 +4,9 @@ const timestampMessageElem = document.getElementById('timestamp-msg');
 
 export const updateTimestampMessage = (theme) => {
   const date = new Date();
+  const timestamp = getFormattedDate(date);
 
-  if (timestampMessageElem.classList.contains('hidden')) {
-    timestampMessageElem.classList.remove('hidden');
-  }
+  localStorage.setItem('timestamp', `${timestamp}`);
 
-  const timestampMessage = `Last time on the ${theme} side: ${getFormattedDate(
-    date
-  )}`;
-
-  localStorage.setItem('timestampMessage', `${timestampMessage}`);
-  timestampMessageElem.innerText = timestampMessage;
+  timestampMessageElem.innerText = `Last time on the ${theme} side: ${timestamp}`;
 };
