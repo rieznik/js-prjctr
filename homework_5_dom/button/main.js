@@ -15,7 +15,6 @@ const initState = () => {
   }
 
   if (timestampMessage) {
-    timestampMessageElem.classList.remove('hidden');
     timestampMessageElem.innerText = timestampMessage;
   }
 };

@@ -65,7 +65,3 @@ body {
 .dark-theme .timestamp {
   color: var(--light);
 }
-
-.hidden {
-  visibility: hidden;
-}
