@@ -1,19 +1,9 @@
-import { setStyle, setButtonText, setTimestampMessage } from './setElements.js';
-import { getTheme, setTheme, setTimestamp, getTimestamp } from './ls.js';
+import { setState } from './setState.js';
+import { getTheme, setTheme, setTimestamp } from './ls.js';
 
 const buttonElem = document.querySelector('#button');
 
-const initState = () => {
-  const timestamp = getTimestamp();
-  if (timestamp) {
-    setTimestampMessage();
-  }
-
-  setStyle();
-  setButtonText();
-};
-
-initState();
+setState();
 
 buttonElem.addEventListener('click', () => {
   const theme = getTheme();
@@ -22,7 +12,6 @@ buttonElem.addEventListener('click', () => {
 
   setTheme(oppositeTheme);
   setTimestamp(date);
-  setStyle();
-  setButtonText();
-  setTimestampMessage();
+
+  setState();
 });
