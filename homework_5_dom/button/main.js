@@ -1,30 +1,38 @@
-import { setTheme } from './setTheme.js';
-import { updateTimestampMessage } from './updateTimestampMessage.js';
+import {
+  setStyle,
+  setButtonText,
+  setTimestampMessage,
+} from './changeElements.js';
+import { getTheme, setTheme, setTimestamp, getTimestamp } from './ls.js';
 
 const buttonElem = document.querySelector('#button');
-const timestampMessageElem = document.getElementById('timestamp-msg');
 
 const initState = () => {
-  const theme = localStorage.getItem('theme');
-  const timestampMessage = localStorage.getItem('timestampMessage');
+  const theme = getTheme();
+  const timestamp = getTimestamp();
 
-  if (!theme || theme === 'light') {
+  if (!theme) {
     setTheme('light');
-  } else {
-    setTheme('dark');
   }
 
-  if (timestampMessage) {
-    timestampMessageElem.innerText = timestampMessage;
+  setStyle();
+  setButtonText();
+
+  if (timestamp) {
+    setTimestampMessage();
   }
 };
 
 initState();
 
 buttonElem.addEventListener('click', () => {
-  const theme = localStorage.getItem('theme');
+  const theme = getTheme();
+  const date = new Date();
   const oppositeTheme = theme === 'light' ? 'dark' : 'light';
 
   setTheme(oppositeTheme);
-  updateTimestampMessage(theme);
+  setTimestamp(date);
+  setStyle();
+  setButtonText();
+  setTimestampMessage();
 });
