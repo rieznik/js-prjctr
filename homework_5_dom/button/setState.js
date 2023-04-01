@@ -1,4 +1,4 @@
-import { getTimestamp, getTheme } from './ls.js';
+import { getTimestamp, getTheme, setTheme } from './ls.js';
 
 const setTimestampMessage = (theme, timestamp) => {
   const timestampMessageElem = document.getElementById('timestamp-msg');
@@ -23,12 +23,18 @@ const setStyle = (theme) => {
 };
 
 export const setState = () => {
-  const theme = getTheme();
+  let theme = getTheme();
   const timestamp = getTimestamp();
 
   if (timestamp) {
     setTimestampMessage(theme, timestamp);
   }
+
+  if (!theme) {
+    setTheme('light');
+    theme = 'light';
+  }
+
   setStyle(theme);
   setButtonText(theme);
 };
