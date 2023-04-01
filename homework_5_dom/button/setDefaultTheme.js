@@ -1,4 +1,4 @@
-import { getTheme } from './ls.js';
+import { getTheme, setTheme } from './ls.js';
 
 const setDefaultTheme = () => {
   const theme = getTheme();

@@ -1,7 +1,18 @@
-import { getFormattedDate } from './getFormattedDate.js';
-
 const LS_TIMESTAMP_KEY = 'timestamp';
 const LS_THEME_KEY = 'theme';
+
+export const getFormattedDate = (date) => {
+  const [day, month, year, hours, minutes, seconds] = [
+    date.getDate(),
+    date.getMonth(),
+    date.getFullYear(),
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+  ];
+
+  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+};
 
 export const getTimestamp = () => {
   return localStorage.getItem(LS_TIMESTAMP_KEY);

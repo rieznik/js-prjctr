@@ -1,8 +1,4 @@
-import {
-  setStyle,
-  setButtonText,
-  setTimestampMessage,
-} from './changeElements.js';
+import { setStyle, setButtonText, setTimestampMessage } from './setElements.js';
 import { getTheme, setTheme, setTimestamp, getTimestamp } from './ls.js';
 
 const buttonElem = document.querySelector('#button');
