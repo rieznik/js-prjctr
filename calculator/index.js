@@ -1,13 +1,16 @@
 `use strict`;
 
 const inputElement = document.querySelector('.input');
-
 const numbersElements = document.querySelectorAll('.number');
+const clearElement = document.querySelector('.clear');
 
 const handleNumberClick = (event) => {
-  event.preventDefault();
   console.log(event.target.innerHTML);
   inputElement.value += event.target.innerHTML;
+};
+
+const handleClearClick = () => {
+  inputElement.value = '';
 };
 
 const startApp = () => {
@@ -16,6 +19,8 @@ const startApp = () => {
   numbersElements.forEach((numberElement) =>
     numberElement.addEventListener('click', handleNumberClick)
   );
+
+  clearElement.addEventListener('click', handleClearClick);
 };
 
 document.addEventListener('DOMContentLoaded', startApp);
