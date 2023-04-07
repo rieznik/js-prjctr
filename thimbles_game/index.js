@@ -32,9 +32,25 @@ const putBallToRandomThimble = () => {
   );
 };
 
+const mixThimble = () => {
+  const indexA = getRandomIndex();
+  const indexB = getRandomIndex();
+  if (indexA === indexB) {
+    mixThimble();
+    return;
+  }
+
+  const classesA = thimblesElements[indexA].getAttribute('class');
+  const classesB = thimblesElements[indexB].getAttribute('class');
+
+  thimblesElements[indexA].setAttribute('class', classesB);
+  thimblesElements[indexB].setAttribute('class', classesA);
+};
+
 const handlePlay = () => {
   console.log('handlePlay');
   putBallToRandomThimble();
   showBall();
   setTimeout(() => hideBall(), 500);
+  setTimeout(() => mixThimble(), 1000);
 };
