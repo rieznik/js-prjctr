@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 class Human {
   constructor(abilities) {
     this.abilities = abilities;
@@ -38,7 +37,7 @@ class Firefly extends Survivor {
     this.role = role;
   }
 
-  communicate_with_group() {
+  communicateWithGroup() {
     console.log(`...${this.name} sends a message to the group...`);
   }
 }
@@ -88,7 +87,7 @@ class Bloater extends Infected {
     this.weight = weight;
   }
 
-  launch_spore_cloud() {
+  launchSporeCloud() {
     console.log('...Explodes and releases spores...');
     this.#sporesCloud = true;
     setTimeout(() => {
@@ -141,7 +140,7 @@ const bloater = new Bloater(
 
 ellie.introduce();
 ellie.showAbilities();
-ellie.communicate_with_group();
+ellie.communicateWithGroup();
 
 joel.introduce();
 joel.showAbilities();
@@ -155,4 +154,4 @@ clicker.isActive();
 
 bloater.showAbilities();
 bloater.showInfectionStage();
-bloater.launch_spore_cloud();
+bloater.launchSporeCloud();
