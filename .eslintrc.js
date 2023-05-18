@@ -13,5 +13,7 @@ module.exports = {
     'no-console': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
+    'no-restricted-syntax': 'off',
+    'no-continue': 'off',
   },
 };
