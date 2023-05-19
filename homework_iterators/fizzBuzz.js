@@ -7,12 +7,30 @@ const checkFizzBuzz = (n) => {
 
 //! Iterator solution
 
-const arr = [...Array(100).keys()].map((i) => i + 1);
-const arrIter = arr[Symbol.iterator]();
+const fizzBuzzIterator = () => {
+  let index = 1;
+  const iterationCount = 101;
 
-// Print
-for (const item of arrIter) {
-  console.log(checkFizzBuzz(item));
+  const iterator = {
+    next: () => {
+      const value = checkFizzBuzz(index);
+      index++;
+
+      return {
+        value,
+        done: index > iterationCount,
+      };
+    },
+  };
+
+  return iterator;
+};
+
+const iterator = fizzBuzzIterator();
+let result = iterator.next();
+while (!result.done) {
+  console.log(result.value);
+  result = iterator.next();
 }
 
 //! Generator solution
