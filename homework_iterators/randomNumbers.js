@@ -8,11 +8,8 @@ function* generateRandomNumbers(max, quantity) {
   return getRandomNum();
 }
 
-const MAX = 1000;
-const QUANTITY = 10;
+const randomNumbers = generateRandomNumbers(100, 10);
 
-const randomNumber = generateRandomNumbers(MAX, QUANTITY);
-
-for (let i = 0; i < QUANTITY; i++) {
-  console.log(randomNumber.next().value);
+for (const number of randomNumbers) {
+  console.log(number);
 }
