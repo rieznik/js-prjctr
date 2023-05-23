@@ -37,7 +37,7 @@ while (!result.done) {
 
 function* fizzBuzzGenerator(start = 1, end = 100) {
   let i = start;
-  while (i < end) {
+  while (i <= end) {
     yield checkFizzBuzz(i);
     i++;
   }
@@ -47,6 +47,6 @@ function* fizzBuzzGenerator(start = 1, end = 100) {
 const fizzBuzz = fizzBuzzGenerator();
 
 // Print
-for (let i = 0; i < 100; i++) {
-  console.log(fizzBuzz.next().value);
+for (const item of fizzBuzz) {
+  console.log(item);
 }
